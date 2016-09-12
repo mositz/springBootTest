@@ -2,6 +2,7 @@ package org.test.bookpub;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySources;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.test.bookpub.annotation.MapperType;
 
 import javax.sql.DataSource;
 
@@ -19,6 +21,7 @@ import javax.sql.DataSource;
  */
 @SpringBootApplication
 @EnableTransactionManagement
+@MapperScan(annotationClass = MapperType.class)
 public class BookPubApplication {
 
     public static void main(String[] args) {
@@ -38,13 +41,11 @@ public class BookPubApplication {
         return dataSourceTransactionManager;
     }
 
-    @Bean
-    public MapperScannerConfigurer createMapperScannerConfigurer(){
-        MapperScannerConfigurer mapperScannerConfigurer= new MapperScannerConfigurer();
-        mapperScannerConfigurer.setBasePackage("org.test");
-        return mapperScannerConfigurer;
-    }
-
-
+//    @Bean
+//    public MapperScannerConfigurer createMapperScannerConfigurer(){
+//        MapperScannerConfigurer mapperScannerConfigurer= new MapperScannerConfigurer();
+//        mapperScannerConfigurer.setBasePackage("org.test");
+//        return mapperScannerConfigurer;
+//    }
 
 }
