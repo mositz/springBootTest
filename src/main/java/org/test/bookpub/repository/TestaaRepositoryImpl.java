@@ -13,10 +13,11 @@ public class TestaaRepositoryImpl implements TestaaRepository {
 
     @Autowired
     private TestaaMapper testaaMapper;
-
+//
 
     @Override
     public Testaa findById(Long id) {
         return testaaMapper.findById(id);
     }
+
 }

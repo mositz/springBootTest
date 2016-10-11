@@ -50,6 +50,9 @@ public class HikariCPConfig {
     @Value("${HikariCP.datasource.readOnly}")
     private boolean readOnly;
 
+    @Value("${HikariCP.datasource.databaseName}")
+    private String databaseName;
+
     @Bean(destroyMethod = "close",name = "hikariDataSource")
     public DataSource primaryDataSource() {
         Properties configProps = new Properties();
@@ -64,6 +67,7 @@ public class HikariCPConfig {
         configProps.put("readOnly", readOnly);
         configProps.put("autoCommit", autoCommit);
         HikariConfig hc = new HikariConfig(configProps);
+        hc.addDataSourceProperty("databaseName", databaseName);
         HikariDataSource ds = new HikariDataSource(hc);
         return ds;
     }

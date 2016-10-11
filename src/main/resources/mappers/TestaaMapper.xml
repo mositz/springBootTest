@@ -1,0 +1,12 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="org.test.bookpub.dao.TestaaMapper">
+
+    <select id="findById" parameterType="long" resultType="org.test.bookpub.entity.Testaa">
+        SELECT * from testaa where id = #{id}
+    </select>
+
+</mapper>

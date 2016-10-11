@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+	<loginRight>
+		<username>尹豆儿1</username>
+		<password>1</password>
+	</loginRight>
+	<loginRight>
+		<username1>尹豆儿2</username1>
+		<password>2</password>
+	</loginRight>
+	<loginRight>
+		<username2>尹豆儿3</username2>
+		<password>3</password>
+	</loginRight>
+	
+</data>

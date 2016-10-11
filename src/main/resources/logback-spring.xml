@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <property name="APP_NAME" value="springBoot"/>
+    <springProperty scope="context" name="LOG_PATH" source="LOG_PATH"/>
+    <property name="LOG_HOME" value="${LOG_PATH}"/>
+    <contextName>${APP_NAME}</contextName>
+
+    <appender name="spring" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/spring/spring.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/spring/zip/gaslog.%d{yyyy-MM-dd}.zip</fileNamePattern>
+            <maxHistory>90</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date %level  %logger{35} %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender" >
+        <encoder>
+            <pattern>%date  %-5level %logger{50}  - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.apache" level="INFO" >
+        <appender-ref ref="spring"/>
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <!--<logger name="org.test" level="INFO" >-->
+        <!--&lt;!&ndash; <appender-ref ref="spring"/> &ndash;&gt;-->
+        <!--<appender-ref ref="STDOUT" />-->
+    <!--</logger>-->
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="spring" />
+    </root>
+
+</configuration>
